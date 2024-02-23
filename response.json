@@ -1,31 +1,30 @@
 {
-    "metadonnées": {
-        "provider": "My software",
-        "version": 4.0
-    },
-    "impacts": {
-      "BLD" : 
-        {
-          "GWP": 123,
-          "ADPe": 13,
-          "ADPf": 23,
-          "WU": 12,
-          "...": ...,
-        },
-      "DIS" : {},
-      "USE" : {},
-      "EOL" : {},
-    },
-    "details": [
-       "1": {
-         "name": "PC - High end",
-         "quantity": 100,
-         "impacts": { Impact object },
-         "pointer": "iuefrbiupdhuçe343U32",
-         "endpoint": "http://api.boavizta.org/",
-         "provider": "BoaviztAPI",
-         "version": 4.0
-        },
-   ]
+      "metadonnées": {
+            "provider": "My software",
+            "version": 4.0
+      },
+      "impacts": {
+            "BLD" : {
+                  "GWP": 123,
+                  "ADPe": 13,
+                  "ADPf": 23,
+                  "WU": 12,
+                  "...": ...
+            },
+            "DIS" : {},
+            "USE" : {},
+            "EOL" : {}
+      },
+      "details": [
+            "1": {
+                  "name": "PC - High end",
+                  "quantity": 100,
+                  "impacts": { Impact object },
+                  "pointer": "iuefrbiupdhuçe343U32",
+                  "endpoint": "http://api.boavizta.org/",
+                  "provider": "BoaviztAPI",
+                  "version": 4.0
+            },
+      ]
 }
 
