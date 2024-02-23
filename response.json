@@ -17,8 +17,8 @@
       },
       "details": [
             "1": {
-                  "name": "PC - High end",
-                  "quantity": 100,
+                  "equipment_type": "server",
+                  "equipment_name": "Dell ProLiant 512",
                   "impacts": { Impact object },
                   "pointer": "iuefrbiupdhuçe343U32",
                   "endpoint": "http://api.boavizta.org/",
