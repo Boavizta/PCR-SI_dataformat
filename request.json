@@ -1,0 +1,23 @@
+{
+  "organization": "My company",
+  "dataset": "IS LCA 2024",
+  "inventory": [
+    {
+      "equipment_type": "server",
+      "equipment_name": "Dell ProLiant 512",
+      "quantity" : 42,
+      "lifetime" : 4.6,
+      "quality" : "medium",
+      "tag": "Datacenter",
+    },
+    {
+      "equipment_type": "laptop",
+      "equipment_name": "HP Elitbook 512",
+      "quantity" : 24,
+      "lifetime" : 6.4,
+      "quality" : "low",
+      "tag": "User environment",
+    },
+    ...
+  ]
+}
