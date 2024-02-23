@@ -1,6 +1,9 @@
 {
       "metadonnées": {
-            "provider": "My software",
+            "provider": "A software",
+            "organization": "My company",
+            "dataset": "LCA of IS",
+            "timestamp": 24-01-01-18:49:52,
             "version": 4.0
       },
       "total_impact": {
