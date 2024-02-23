@@ -29,10 +29,8 @@
                   "equipment_type": "server",
                   "equipment_name": "Dell ProLiant 512",
                   "impacts": { ImpactObject },
-                  "pointer": "iuefrbiupdhuçe343U32",
-                  "endpoint": "http://api.boavizta.org/",
-                  "provider": "BoaviztAPI",
-                  "version": 4.0
+                  "source": "http://api.boavizta.org/iuefrbiupdhuçe343U32",
+                  "provider": "BoaviztAPI - 4.0"
             },
       ]
 }
