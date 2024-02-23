@@ -1,4 +1,4 @@
-# PCR-IS_dataformat
+# IS Footprint Dataformat
 
 ## Intro
 This repository is intended to offer a technical standard for data exchange, regarding Information Systems (IS) environmental footprints.
