@@ -15,11 +15,15 @@
             "USE" : {},
             "EOL" : {}
       },
+      "tags" : {
+            "Datacenter": { ImpactObject },
+            "User environment": { ImpactObject },
+      },
       "details": [
             "1": {
                   "equipment_type": "server",
                   "equipment_name": "Dell ProLiant 512",
-                  "impacts": { Impact object },
+                  "impacts": { ImpactObject },
                   "pointer": "iuefrbiupdhuçe343U32",
                   "endpoint": "http://api.boavizta.org/",
                   "provider": "BoaviztAPI",
