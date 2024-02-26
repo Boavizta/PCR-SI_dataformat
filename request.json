@@ -18,6 +18,14 @@
       "quality" : "low",
       "tag": ["User environment"],
     },
+    {
+      "equipment_type": "virtual machine",
+      "equipment_name": "AWS EC2 xy",
+      "quantity" : 4,
+      "lifetime" : 1,
+      "quality" : "low",
+      "tag": ["Cloud"],
+    },
     ...
   ]
 }
