@@ -1,9 +1,9 @@
 {
-      "metadonnées": {
+      "metadata": {
             "provider": "A software",
             "organization": "My company",
             "dataset": "LCA of IS",
-            "timestamp": 24-01-01-18:49:52,
+            "timestamp": "24-01-01-18:49:52",
             "version": 4.0
       },
       "total_impact": {
@@ -18,10 +18,13 @@
             "USE" : {},
             "EOL" : {}
       },
-      "tags" : {
-            "Datacenter": { ImpactObject },
-            "User environment": { ImpactObject },
-      },
+      "tags": [
+        {
+          "name": "Datacenter",
+          "impacts": { ImpactObject }
+        },
+        { ... }
+      ],
       "quality": {
             "high": 0.23,
             "medium": 0.47,
@@ -31,6 +34,8 @@
             "1": {
                   "equipment_type": "server",
                   "equipment_name": "Dell ProLiant 512",
+                  "tags": ["Datacenter"],
+                  "quality": "high",
                   "impacts": { ImpactObject },
                   "source": "http://api.boavizta.org/iuefrbiupdhuçe343U32",
                   "provider": "BoaviztAPI - 4.0"
