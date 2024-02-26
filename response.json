@@ -47,6 +47,15 @@
                   "source": "http://api.boavizta.org/iuefrbiupdhuçe343U32",
                   "provider": "BoaviztAPI - 4.0"
             },
+            "2": {
+                  "equipment_type": "virtual machine",
+                  "equipment_name": "AWS EC2 xy",
+                  "tags": ["Cloud"],
+                  "quality": "medium",
+                  "impacts": { ImpactObject },
+                  "source": "http://aws.com/iuefrbiupdhuçe343U32",
+                  "provider": "AWS CSR declaration 2024 - 1.0"
+            },
       ]
 }
 
