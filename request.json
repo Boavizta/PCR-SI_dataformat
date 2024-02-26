@@ -1,10 +1,10 @@
 {
   "organization": "My company",
   "dataset": "IS LCA 2024",
-  "countries electricity":
+  "electricity":
     [
       {
-        "country": "France",
+        "name": "Custom",
         "impacts": { ImpactObject },
         "source": "Https://blabla"
       },
@@ -19,7 +19,7 @@
       "lifetime" : 4.6,
       "quality" : "medium",
       "yearly electricity consumption": 1000,
-      "country of use": "France",
+      "mix of use": "Custom",
       "tags": ["Datacenter A"],
     },
     {
@@ -30,7 +30,7 @@
       "lifetime" : 1,
       "quality" : "medium",
       "yearly electricity consumption": 8000,
-      "country of use": "France",
+      "mix of use": "Custom",
       "tags": ["Datacenter A"],
     },
     {
@@ -41,7 +41,7 @@
       "lifetime" : 4.6,
       "quality" : "medium",
       "yearly electricity consumption": 1000,
-      "country of use": "France",
+      "mix of use": "France",
       "tags": ["Datacenter B"],
     },
     {
@@ -52,7 +52,7 @@
       "lifetime" : 1,
       "quality" : "medium",
       "yearly electricity consumption": 6000,
-      "country of use": "France",
+      "mix of use": "France",
       "tags": ["Datacenter B"],
     },
     {
@@ -63,7 +63,7 @@
       "lifetime" : 6.4,
       "quality" : "low",
       "yearly electricity consumption": 100,
-      "country of use": "Switzerland",
+      "mix of use": "Switzerland",
       "tag": ["User environment"],
     },
     {
