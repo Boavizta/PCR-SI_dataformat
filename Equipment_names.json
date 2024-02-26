@@ -1,8 +1,28 @@
 {
-  "generic":
-  [
-    "laptop"
-    "server"
-    ...
-  ]   
+    "equipement_types":  
+      {
+        "name": "server",
+        "references":
+          [
+            "Dell Proliant 12",
+          ]
+      },
+      {
+        "name": "laptop",
+        "references":
+          [
+            "Generic - Mid range",
+            "Generic - High range",
+            "Dell Latitude 12",
+            "HP Elitebook 512"
+          ]
+      },
+      {
+        "name": "cloud",
+        "references":
+          [
+            "Generic VM",
+            "AWS EC2"
+          ]
+      }
 }
