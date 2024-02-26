@@ -12,7 +12,7 @@
     },
     {
       "equipment_type": "laptop",
-      "equipment_name": "HP Elitbook 512",
+      "equipment_name": "HP Elitebook 512",
       "quantity" : 24,
       "lifetime" : 6.4,
       "quality" : "low",
@@ -21,10 +21,11 @@
     {
       "equipment_type": "virtual machine",
       "equipment_name": "AWS EC2 xy",
-      "quantity" : 4,
+      "quantity" : 1,
       "lifetime" : 1,
       "quality" : "low",
       "tag": ["Cloud"],
+      "impacts": { ImpactObject /* AWS Declaration */ }
     },
     ...
   ]
