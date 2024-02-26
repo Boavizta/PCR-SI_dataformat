@@ -25,13 +25,18 @@
             "AWS EC2"
           ]
       },
-    "country electricity":
-    [
-      {
-        "country": "France",
-        "impacts": { ImpactObject },
-        "source": "Https://blabla"
-      },
-      {...}
-    ]
+    "electricity":
+        [
+          {
+            "name": "France",
+            "impacts": { ImpactObject },
+            "source": "Https://blabla"
+          },
+            {
+            "name": "Wind turbine",
+            "impacts": { ImpactObject },
+            "source": "Https://blabla"
+          },
+          {...}
+        ]
 }
