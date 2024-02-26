@@ -24,5 +24,14 @@
             "Generic VM",
             "AWS EC2"
           ]
-      }
+      },
+    "country electricity":
+    [
+      {
+        "country": "France",
+        "impacts": { ImpactObject },
+        "source": "Https://blabla"
+      },
+      {...}
+    ]
 }
