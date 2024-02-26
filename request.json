@@ -8,7 +8,7 @@
       "quantity" : 42,
       "lifetime" : 4.6,
       "quality" : "medium",
-      "tag": "Datacenter",
+      "tags": ["Datacenter"],
     },
     {
       "equipment_type": "laptop",
@@ -16,7 +16,7 @@
       "quantity" : 24,
       "lifetime" : 6.4,
       "quality" : "low",
-      "tag": "User environment",
+      "tag": ["User environment"],
     },
     ...
   ]
