@@ -1,0 +1,445 @@
+openapi: "3.0.0"
+info:
+  description: "First proposal for a Restfull API with a data model inspired by https://github.com/Boavizta/PCR-SI_dataformat/\n\
+    Only a Simple CRUD on Report is specified\n\nPost is use to post a report request\
+    \  with the inventory and electricy / energy mix and should reply  an http status\
+    \ code 202  with  URI  of future report\nGet is use to retrieve a specific report\
+    \ whit its ID\nFind is use de find a report with some criterias\n\nSub Resource\
+    \ management may be designing  "
+  version: "0.1.0_inProgress"
+  title: "PCR_SI"
+tags:
+- name: "Report"
+paths:
+  /report:
+    post:
+      tags:
+      - "Report"
+      operationId: "reportCreate"
+      summary: "create report"
+      requestBody:
+        required: true
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Report"
+      responses:
+        "202":
+          description: "Accepted"
+        "400":
+          description: "Bad Request\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "404":
+          description: "Not Found\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "405":
+          description: "Method Not Allowed\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "422":
+          description: "Unprocessable entity\n\nBusiness error"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "500":
+          description: "Internal Server Error\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "503":
+          description: "Service Unavailable\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+    get:
+      tags:
+      - "Report"
+      operationId: "reportFind"
+      summary: "find report"
+      parameters:
+      - name: "organisation"
+        required: false
+        in: "query"
+        schema:
+          type: "string"
+      - name: "provider"
+        required: false
+        in: "query"
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Report"
+        "400":
+          description: "Bad Request\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "404":
+          description: "Not Found\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "405":
+          description: "Method Not Allowed\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "422":
+          description: "Unprocessable entity\n\nBusiness error"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "500":
+          description: "Internal Server Error\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "503":
+          description: "Service Unavailable\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+  /report/{reportId}:
+    get:
+      tags:
+      - "Report"
+      operationId: "reportGet"
+      summary: "get report"
+      parameters:
+      - name: "reportId"
+        required: true
+        in: "path"
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Report"
+        "400":
+          description: "Bad Request\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "404":
+          description: "Not Found\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "405":
+          description: "Method Not Allowed\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "422":
+          description: "Unprocessable entity\n\nBusiness error"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "500":
+          description: "Internal Server Error\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "503":
+          description: "Service Unavailable\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+    delete:
+      tags:
+      - "Report"
+      operationId: "reportDelete"
+      summary: "delete report"
+      parameters:
+      - name: "reportId"
+        required: true
+        in: "path"
+        schema:
+          type: "string"
+      responses:
+        "204":
+          description: "No Content"
+        "400":
+          description: "Bad Request\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "404":
+          description: "Not Found\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "405":
+          description: "Method Not Allowed\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "422":
+          description: "Unprocessable entity\n\nBusiness error"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "500":
+          description: "Internal Server Error\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+        "503":
+          description: "Service Unavailable\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/OrangeApiError"
+servers:
+- url: "/v1"
+components:
+  schemas:
+    EQUIPEMENT_TYPE:
+      type: "string"
+      enum:
+      - "SERVER"
+      - "VIRTUAL MACHINE"
+      - "NOT IT"
+      - "LAPTOP"
+    Impact:
+      required:
+      - "build"
+      - "distribution"
+      - "use"
+      - "endOfLife"
+      type: "object"
+      properties:
+        build:
+          $ref: "#/components/schemas/ImpactsByIndicators"
+        distribution:
+          $ref: "#/components/schemas/ImpactsByIndicators"
+        use:
+          $ref: "#/components/schemas/ImpactsByIndicators"
+        endOfLife:
+          $ref: "#/components/schemas/ImpactsByIndicators"
+    Impact_detail:
+      required:
+      - "equipement_type"
+      - "equipement_name"
+      - "tags"
+      - "quality"
+      - "impact"
+      - "source"
+      - "provider"
+      type: "object"
+      properties:
+        equipement_type:
+          $ref: "#/components/schemas/EQUIPEMENT_TYPE"
+        equipement_name:
+          type: "string"
+        tags:
+          type: "string"
+        quality:
+          $ref: "#/components/schemas/Quality"
+        impact:
+          $ref: "#/components/schemas/Impact"
+        source:
+          type: "string"
+        provider:
+          type: "string"
+    ImpactsByIndicators:
+      type: "object"
+      properties:
+        AP:
+          type: "string"
+        GWP:
+          type: "string"
+        CTUe:
+          type: "string"
+        Epf:
+          type: "string"
+        Epm:
+          type: "string"
+        Ept:
+          type: "string"
+        CTUh-c:
+          type: "string"
+        CTUh-nc:
+          type: "string"
+        IR:
+          type: "string"
+        LU:
+          type: "string"
+        MIPS:
+          type: "string"
+        ODP:
+          type: "string"
+        PM:
+          type: "string"
+        POCP:
+          type: "string"
+        ADPf:
+          type: "string"
+        ADPe:
+          type: "string"
+        TPE:
+          type: "string"
+        WU:
+          type: "string"
+    Inventory:
+      required:
+      - "equipement_type"
+      - "equipement_name"
+      - "quantity"
+      - "unit"
+      - "lifetime"
+      - "quality"
+      - "yearly_ielectricity_consupmtion_in_kwh"
+      - "electricityMix"
+      - "impacts"
+      type: "object"
+      properties:
+        equipement_type:
+          $ref: "#/components/schemas/EQUIPEMENT_TYPE"
+        equipement_name:
+          type: "string"
+        quantity:
+          type: "number"
+          format: "float"
+        unit:
+          type: "string"
+        lifetime:
+          type: "number"
+          format: "float"
+        quality:
+          $ref: "#/components/schemas/Quality"
+        yearly_ielectricity_consupmtion_in_kwh:
+          type: "number"
+          format: "float"
+        electricityMix:
+          type: "string"
+        tag:
+          type: "string"
+        impacts:
+          $ref: "#/components/schemas/Impact"
+    Metadata:
+      required:
+      - "organization"
+      - "dataset"
+      - "timestamp"
+      - "provider"
+      - "version"
+      type: "object"
+      properties:
+        organization:
+          type: "string"
+        dataset:
+          type: "string"
+        timestamp:
+          type: "string"
+        provider:
+          type: "string"
+        sources:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Source"
+        version:
+          type: "string"
+    Quality:
+      type: "string"
+      enum:
+      - "HIGH"
+      - "MEDIUM"
+      - "LOW"
+    Report:
+      type: "object"
+      properties:
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+        total_impact:
+          $ref: "#/components/schemas/Impact"
+        tags:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Tag"
+        inventory:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Inventory"
+        quality:
+          $ref: "#/components/schemas/ReportQuality"
+        detailed_impact:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Impact_detail"
+    ReportQuality:
+      required:
+      - "high"
+      - "medium"
+      - "low"
+      type: "object"
+      properties:
+        high:
+          type: "number"
+          format: "float"
+        medium:
+          type: "number"
+          format: "float"
+        low:
+          type: "number"
+          format: "float"
+    Source:
+      required:
+      - "name"
+      - "version"
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        version:
+          type: "string"
+        href:
+          type: "string"
+          format: "uri"
+    Tag:
+      required:
+      - "impacts"
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        impacts:
+          $ref: "#/components/schemas/ImpactsByIndicators"
