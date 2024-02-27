@@ -8,6 +8,11 @@ This is a follow-up from the working group on [Product Category Rule for Informa
 - A request format, in `request.json`, to submit an IS
 - A response format, in `response.json`, to deliver an IS environmental footprint
 
+## Not defined :
+Each calculation tool will have to manage and explain its management of the following subjects:
+- Default mode management, for the different phases of the life cycle (equipment model, electricity mix, etc.)
+- Confidentiality and data processing/recording policy
+
 ## Authors :
 Members of the Working Group on PCR IS are members of the following entities :
 - Alliance GreenIT
