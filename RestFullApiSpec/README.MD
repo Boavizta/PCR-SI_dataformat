@@ -5,8 +5,8 @@ First proposal for a Restfull API with a data model inspired by https://github.c
 *    Get is use to retrieve a specific report with its ID
 *    Find is use de find a report with some criterias  
 
-[Swagger is here](./swagger.yaml)
-[And in a live SwaggerUI ](https://petstore.swagger.io/?url=https://petstore.swagger.io/v2/swagger.yaml)
+[Swagger is here](./swagger.yaml)  
+[And in a live SwaggerUI ](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/sebwt/PCR-SI_dataformat/f0119ed9b26c629b6994651906873d01b3f3c84c/RestFullApiSpec/swagger.yaml)
 
 Sub Resource management may be designing
 
