@@ -1,67 +1,22 @@
 openapi: "3.0.0"
 info:
-  description: "First proposal for a Restfull API with a data model inspired by https://github.com/Boavizta/PCR-SI_dataformat/\n\
-    Only a Simple CRUD on Report is specified\n\nPost is use to post a report request\
-    \  with the inventory and electricy / energy mix and should reply  an http status\
-    \ code 202  with  URI  of future report\nGet is use to retrieve a specific report\
-    \ whit its ID\nFind is use de find a report with some criterias\n\nSub Resource\
-    \ management may be designing  "
+  description: "Please add descriptionFirst proposal for a Restfull API with a data\
+    \ model inspired by https://github.com/Boavizta/PCR-SI_dataformat/ .\n\n    Only\
+    \ a Simple CRUD on Report is specified\n    Post is use to post a report request\
+    \ with the inventory and electricy / energy mix and should reply an http status\
+    \ code 202 with URI of future report\n    Get is use to retrieve a specific report\
+    \ with its ID\n    Find is use de find a report with some criterias\n\nSwagger\
+    \ is here\nAnd in a live SwaggerUI\n\nSub Resource management may be designing\n\
+    \ndata model discordance\n\nRestFull API require same model for request & responses.\
+    \ A first proposal is bassed on report resource which hold request.json essentilas\
+    \ attribute\n\nanother strategy is to post a report_request item which generate\
+    \ a report item"
   version: "0.1.0_inProgress"
-  title: "PCR_SI"
+  title: "Proposal"
 tags:
 - name: "Report"
 paths:
   /report:
-    post:
-      tags:
-      - "Report"
-      operationId: "reportCreate"
-      summary: "create report"
-      requestBody:
-        required: true
-        content:
-          application/json;charset=utf-8:
-            schema:
-              $ref: "#/components/schemas/Report"
-      responses:
-        "202":
-          description: "Accepted"
-        "400":
-          description: "Bad Request\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/OrangeApiError"
-        "404":
-          description: "Not Found\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/OrangeApiError"
-        "405":
-          description: "Method Not Allowed\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/OrangeApiError"
-        "422":
-          description: "Unprocessable entity\n\nBusiness error"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/OrangeApiError"
-        "500":
-          description: "Internal Server Error\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/OrangeApiError"
-        "503":
-          description: "Service Unavailable\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/OrangeApiError"
     get:
       tags:
       - "Report"
@@ -92,37 +47,87 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "404":
           description: "Not Found\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "405":
           description: "Method Not Allowed\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "422":
-          description: "Unprocessable entity\n\nBusiness error"
+          description: "Unprocessable entity\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "500":
           description: "Internal Server Error\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "503":
           description: "Service Unavailable\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
+    post:
+      tags:
+      - "Report"
+      operationId: "reportCreate"
+      summary: "create report"
+      requestBody:
+        required: true
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Report"
+      responses:
+        "202":
+          description: "Accepted"
+        "400":
+          description: "Bad Request\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/"
+        "404":
+          description: "Not Found\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/"
+        "405":
+          description: "Method Not Allowed\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/"
+        "422":
+          description: "Unprocessable entity\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/"
+        "500":
+          description: "Internal Server Error\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/"
+        "503":
+          description: "Service Unavailable\n\n"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/"
   /report/{reportId}:
     get:
       tags:
@@ -147,37 +152,37 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "404":
           description: "Not Found\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "405":
           description: "Method Not Allowed\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "422":
-          description: "Unprocessable entity\n\nBusiness error"
+          description: "Unprocessable entity\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "500":
           description: "Internal Server Error\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "503":
           description: "Service Unavailable\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
     delete:
       tags:
       - "Report"
@@ -197,37 +202,37 @@ paths:
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "404":
           description: "Not Found\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "405":
           description: "Method Not Allowed\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "422":
-          description: "Unprocessable entity\n\nBusiness error"
+          description: "Unprocessable entity\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "500":
           description: "Internal Server Error\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
         "503":
           description: "Service Unavailable\n\n"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/OrangeApiError"
+                $ref: "#/components/schemas/"
 servers:
 - url: "/v1"
 components:
@@ -235,10 +240,23 @@ components:
     EQUIPEMENT_TYPE:
       type: "string"
       enum:
+      - "LAPTOP"
+      - "NOT IT"
       - "SERVER"
       - "VIRTUAL MACHINE"
-      - "NOT IT"
-      - "LAPTOP"
+    Electricity_Mix:
+      required:
+      - "name"
+      - "impact"
+      - "source"
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        impact:
+          $ref: "#/components/schemas/Impact"
+        source:
+          $ref: "#/components/schemas/Source"
     Impact:
       required:
       - "build"
@@ -248,14 +266,14 @@ components:
       type: "object"
       properties:
         build:
-          $ref: "#/components/schemas/ImpactsByIndicators"
+          $ref: "#/components/schemas/Impacts_By_Indicators"
         distribution:
-          $ref: "#/components/schemas/ImpactsByIndicators"
+          $ref: "#/components/schemas/Impacts_By_Indicators"
         use:
-          $ref: "#/components/schemas/ImpactsByIndicators"
+          $ref: "#/components/schemas/Impacts_By_Indicators"
         endOfLife:
-          $ref: "#/components/schemas/ImpactsByIndicators"
-    Impact_detail:
+          $ref: "#/components/schemas/Impacts_By_Indicators"
+    Impact_Detail:
       required:
       - "equipement_type"
       - "equipement_name"
@@ -280,7 +298,7 @@ components:
           type: "string"
         provider:
           type: "string"
-    ImpactsByIndicators:
+    Impacts_By_Indicators:
       type: "object"
       properties:
         AP:
@@ -327,8 +345,8 @@ components:
       - "unit"
       - "lifetime"
       - "quality"
-      - "yearly_ielectricity_consupmtion_in_kwh"
-      - "electricityMix"
+      - "yearly_electricity_consupmtion_in_kwh"
+      - "electricity_Mix"
       - "impacts"
       type: "object"
       properties:
@@ -346,10 +364,10 @@ components:
           format: "float"
         quality:
           $ref: "#/components/schemas/Quality"
-        yearly_ielectricity_consupmtion_in_kwh:
+        yearly_electricity_consupmtion_in_kwh:
           type: "number"
           format: "float"
-        electricityMix:
+        electricity_Mix:
           type: "string"
         tag:
           type: "string"
@@ -382,8 +400,8 @@ components:
       type: "string"
       enum:
       - "HIGH"
-      - "MEDIUM"
       - "LOW"
+      - "MEDIUM"
     Report:
       type: "object"
       properties:
@@ -400,12 +418,16 @@ components:
           items:
             $ref: "#/components/schemas/Inventory"
         quality:
-          $ref: "#/components/schemas/ReportQuality"
+          $ref: "#/components/schemas/Report_Quality"
         detailed_impact:
           type: "array"
           items:
-            $ref: "#/components/schemas/Impact_detail"
-    ReportQuality:
+            $ref: "#/components/schemas/Impact_Detail"
+        electricity_mix:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Electricity_Mix"
+    Report_Quality:
       required:
       - "high"
       - "medium"
@@ -442,4 +464,4 @@ components:
         name:
           type: "string"
         impacts:
-          $ref: "#/components/schemas/ImpactsByIndicators"
+          $ref: "#/components/schemas/Impacts_By_Indicators"
