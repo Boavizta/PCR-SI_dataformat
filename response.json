@@ -37,7 +37,7 @@
             "medium": 0.47,
             "high": 0.30
       } 
-      "details": [
+      "details": {
             "1": {
                   "equipment_type": "server",
                   "equipment_name": "Dell ProLiant 512",
@@ -56,6 +56,6 @@
                   "source": "http://aws.com/iuefrbiupdhuçe343U32",
                   "provider": "AWS CSR declaration 2024 - 1.0"
             },
-      ]
+      }
 }
 
