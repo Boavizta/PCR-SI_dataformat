@@ -39,8 +39,8 @@
       } 
       "details": {
             "1": {
-                  "equipment_type": "server",
-                  "equipment_name": "Dell ProLiant 512",
+                  "type": "server",
+                  "name": "Dell ProLiant 512",
                   "tags": ["Datacenter"],
                   "quality": "high",
                   "impacts": { ImpactObject },
@@ -48,8 +48,8 @@
                   "provider": "BoaviztAPI - 4.0"
             },
             "2": {
-                  "equipment_type": "virtual machine",
-                  "equipment_name": "AWS EC2 xy",
+                  "type": "virtual machine",
+                  "name": "AWS EC2 xy",
                   "tags": ["Cloud"],
                   "quality": "medium",
                   "impacts": { ImpactObject },
