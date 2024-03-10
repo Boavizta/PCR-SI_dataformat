@@ -13,8 +13,8 @@
   "inventory": [
     {
       "id": "ToBeChoosenFreely"
-      "equipment_type": "server",
-      "equipment_name": "Dell ProLiant 512",
+      "type": "server",
+      "name": "Dell ProLiant 512",
       "quantity" : 42,
       "unit": "piece",
       "lifetime" : 4.6,
@@ -25,8 +25,8 @@
     },
     {
       "id": "ToBeChoosenFreely",
-      "equipment_type": "non-IT",
-      "equipment_name": "Non-IT Electricity",
+      "type": "non-IT",
+      "name": "Non-IT Electricity",
       "quantity" : 1,
       "unit": "kWh",
       "lifetime" : 1,
@@ -37,8 +37,8 @@
     },
     {
       "id": "ToBeChoosenFreely",
-      "equipment_type": "server",
-      "equipment_name": "Dell ProLiant 513",
+      "type": "server",
+      "name": "Dell ProLiant 513",
       "quantity" : 24,
       "unit": "piece",
       "lifetime" : 4.6,
@@ -49,8 +49,8 @@
     },
     {
       "id": "ToBeChoosenFreely"
-      "equipment_type": "non-IT",
-      "equipment_name": "Non-IT Devices",
+      "type": "non-IT",
+      "name": "Non-IT Devices",
       "quantity" : 1,
       "unit": "piece",
       "lifetime" : 1,
@@ -61,8 +61,8 @@
     },
     {
       "id": "ToBeChoosenFreely"
-      "equipment_type": "laptop",
-      "equipment_name": "HP Elitebook 512",
+      "type": "laptop",
+      "name": "HP Elitebook 512",
       "quantity" : 24,
       "unit": "piece",
       "lifetime" : 6.4,
@@ -73,8 +73,8 @@
     },
     {
       "id": "ToBeChoosenFreely"
-      "equipment_type": "virtual machine",
-      "equipment_name": "AWS EC2 XY",
+      "type": "virtual machine",
+      "name": "AWS EC2 XY",
       "quantity" : 12,
       "unit": "hours of CPU",
       "lifetime" : 1,
