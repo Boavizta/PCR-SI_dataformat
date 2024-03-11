@@ -6,14 +6,14 @@ They must obey to the following structure :
 - Level 2: 3 to 5 letters code for Impact or Flux indicators
 
 ## Life Cycle Steps
-The accepted Life Cycle Step are :
+The accepted Life Cycle Step are optional and are the following :
 - BLD: Build/Manufacturing
 - DIS: Distribution
 - USE: Usage
 - EOL: End Of Life
 
 ## Indicators (Impact Categories and Fluxes)
-The accepted Impact/Flux indicators are :
+The accepted Impact/Flux indicators are optional and are the following :
 - AP - Acidification -	mol H+ eq
 - GWP - Climate change -	kg CO2 eq
 - CTUe - Ecotoxicity, freshwater -	CTUe
@@ -32,3 +32,5 @@ The accepted Impact/Flux indicators are :
 - ADPe - Resource use, minerals and metals -	kg Sb eq
 - TPE - Total Primary Energy -	MJ
 - WU - Water use -	m3 eq
+
+WARNING : For PCR compliance, the required indicators must be provided. 
