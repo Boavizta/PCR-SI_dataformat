@@ -11,7 +11,15 @@
                   },
                   {...}
             ],
-            "version": 4.0
+            "version": 4.0,
+            "indicators" : [
+                  {
+                        "indicator": "GWP",
+                        "source": "Reference to IPPC X",
+                        "unit": "kg CO2e"
+                  },
+                  {...}
+            ]
       },
       "total_impact": {
             "BLD" : {
