@@ -6,7 +6,7 @@ First proposal for a Restfull API with a data model inspired by https://github.c
 *    Find is use de find a report with some criterias  
 
 [Swagger is here](./swagger.yaml)  
-[And in a live SwaggerUI ](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/sebwt/PCR-SI_dataformat/f0119ed9b26c629b6994651906873d01b3f3c84c/RestFullApiSpec/swagger.yaml)
+[And in a live SwaggerUI ](https://petstore.swagger.io/?url=https://petstore.swagger.io/?url=https://raw.githubusercontent.com/sebwt/PCR-SI_dataformat/main/RestFullApiSpec/swagger.yaml)
 
 Sub Resource management may be designing
 
@@ -15,7 +15,4 @@ Sub Resource management may be designing
 
 # data model discordance
 
-RestFull API require  same  model  for request &  responses.
-A first  proposal is bassed on  report resource  which hold request.json  essentilas attribute
-
-another strategy is to post a report_request item which generate  a report item  
+due to manual work there is some mismath between references, request, response & impact object, oas spec purpose to resolve it (but it's a manual work too ;-) 
