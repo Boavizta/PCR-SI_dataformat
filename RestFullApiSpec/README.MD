@@ -1,9 +1,10 @@
 # what is?
-First proposal for a Restfull API with a data model inspired by https://github.com/Boavizta/PCR-SI_dataformat/  .
-* Only a Simple CRUD on Report is specified  
-*    Post is use to post a report request  with the inventory and electricy / energy mix and should reply  an http status code 202  with  URI  of future report
-*    Get is use to retrieve a specific report with its ID
-*    Find is use de find a report with some criterias  
+First proposal for a Restfull API  implementation for https://github.com/Boavizta/PCR-SI_dataformat/  .
+ API  purpose to 
+*    Post a ReportRequest for a report engine
+*    Find & Get a reportRequest & specificly its status
+*    Retrieve a Report
+   
 
 [Swagger is here](./swagger.yaml)  
 [And in a live SwaggerUI ](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/sebwt/PCR-SI_dataformat/main/RestFullApiSpec/swagger.yaml)
