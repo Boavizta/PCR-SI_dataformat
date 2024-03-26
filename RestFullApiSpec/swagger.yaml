@@ -1,25 +1,22 @@
 openapi: "3.0.0"
 info:
-  description: "Please add descriptionFirst proposal for a Restfull API with a data\
-    \ model inspired by https://github.com/Boavizta/PCR-SI_dataformat/ .\n\n    Only\
-    \ a Simple CRUD on Report is specified\n    Post is use to post a report request\
-    \ with the inventory and electricy / energy mix and should reply an http status\
-    \ code 202 with URI of future report\n    Get is use to retrieve a specific report\
-    \ with its ID\n    Find is use de find a report with some criterias\n\nSwagger\
-    \ is here\nAnd in a live SwaggerUI\n\nSub Resource management may be designing\n\
-    \ndata model discordance\n\nRestFull API require same model for request & responses.\
-    \ A first proposal is bassed on report resource which hold request.json essentilas\
-    \ attribute\n\nanother strategy is to post a report_request item which generate\
-    \ a report item"
-  version: "0.1.0_inProgress"
-  title: "Proposal"
+  description: "Proposal for a Restfull API with a data model inspired by https://github.com/Boavizta/PCR-SI_dataformat/\n\
+    \\\n    Only a Simple CRUD on Report is specified\n\nPost is use to post a report\
+    \ request\\\n    \\  with the inventory and electricy / energy mix and should\
+    \ reply  an http status\\\n    \\ code 202  with  URI  of future report\nGet is\
+    \ use to retrieve a specific report\\\n    \\ whit its ID\nFind is use de find\
+    \ a report with some criterias\n\nSub Resource\\\n    \\ management may be designing\""
+  version: "0.2.1_inProgress"
+  title: "PCR_SI"
 tags:
-- name: "Report"
+- name: "Reports"
+- name: "Reportrequests"
+- name: "References"
 paths:
-  /report:
+  /reports:
     get:
       tags:
-      - "Report"
+      - "Reports"
       operationId: "reportFind"
       summary: "find report"
       parameters:
@@ -33,6 +30,29 @@ paths:
         in: "query"
         schema:
           type: "string"
+      - name: "date"
+        required: false
+        in: "query"
+        schema:
+          type: "string"
+          format: "date"
+      - name: "limit"
+        required: false
+        in: "query"
+        schema:
+          type: "integer"
+          format: "int32"
+          default: 10
+          maximum: 50
+          minimum: 1
+      - name: "offset"
+        required: false
+        in: "query"
+        schema:
+          type: "integer"
+          format: "int32"
+          default: 0
+          minimum: 0
       responses:
         "200":
           description: "Ok"
@@ -42,96 +62,10 @@ paths:
                 type: "array"
                 items:
                   $ref: "#/components/schemas/Report"
-        "400":
-          description: "Bad Request\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "404":
-          description: "Not Found\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "405":
-          description: "Method Not Allowed\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "422":
-          description: "Unprocessable entity\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "500":
-          description: "Internal Server Error\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "503":
-          description: "Service Unavailable\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-    post:
-      tags:
-      - "Report"
-      operationId: "reportCreate"
-      summary: "create report"
-      requestBody:
-        required: true
-        content:
-          application/json;charset=utf-8:
-            schema:
-              $ref: "#/components/schemas/Report"
-      responses:
-        "202":
-          description: "Accepted"
-        "400":
-          description: "Bad Request\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "404":
-          description: "Not Found\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "405":
-          description: "Method Not Allowed\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "422":
-          description: "Unprocessable entity\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "500":
-          description: "Internal Server Error\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "503":
-          description: "Service Unavailable\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-  /report/{reportId}:
+  /reports/{reportId}:
     get:
       tags:
-      - "Report"
+      - "Reports"
       operationId: "reportGet"
       summary: "get report"
       parameters:
@@ -147,117 +81,496 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: "#/components/schemas/Report"
-        "400":
-          description: "Bad Request\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "404":
-          description: "Not Found\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "405":
-          description: "Method Not Allowed\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "422":
-          description: "Unprocessable entity\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "500":
-          description: "Internal Server Error\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "503":
-          description: "Service Unavailable\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-    delete:
+              examples:
+                reportSample:
+                  value: "{   \"reportId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+                    ,   \"metadata\": {     \"organization\": \"My company\",    \
+                    \ \"dataset\": \"IS LCA 2024\",     \"timestamp\": \"2024-03-26T18:54:51.856Z\"\
+                    ,     \"provider\": \"A software\",     \"sources\": [       {\
+                    \         \"name\": \"NegaOctet\",         \"version\": \"1.02\"\
+                    ,         \"href\": \"https://fakeUrl.org\"       }     ],   \
+                    \  \"version\": \"4.0 \",     \"indicators\": [       {      \
+                    \       \"indicator\": \"GWP\",             \"source\": \"Reference\
+                    \ to IPPC X\",             \"unit\": \"kg CO2e\"       }]   },\
+                    \   \"total_impact\": {     \"build\": {       \"AP\": 0,    \
+                    \   \"GWP\": 0,       \"CTUe\": 0,       \"Epf\": 0,       \"\
+                    Epm\": 0,       \"Ept\": 0,       \"CTUh-c\": 0,       \"CTUh-nc\"\
+                    : 0,       \"IR\": 0,       \"LU\": 0,       \"MIPS\": 0,    \
+                    \   \"ODP\": 0,       \"PM\": 0,       \"POCP\": 0,       \"ADPf\"\
+                    : 0,       \"ADPe\": 0,       \"TPE\": 0,       \"WU\": 0    \
+                    \ },     \"distribution\": {       \"AP\": 0,       \"GWP\": 0,\
+                    \       \"CTUe\": 0,       \"Epf\": 0,       \"Epm\": 0,     \
+                    \  \"Ept\": 0,       \"CTUh-c\": 0,       \"CTUh-nc\": 0,    \
+                    \   \"IR\": 0,       \"LU\": 0,       \"MIPS\": 0,       \"ODP\"\
+                    : 0,       \"PM\": 0,       \"POCP\": 0,       \"ADPf\": 0,  \
+                    \     \"ADPe\": 0,       \"TPE\": 0,       \"WU\": 0     },  \
+                    \   \"use\": {       \"AP\": 0,       \"GWP\": 0,       \"CTUe\"\
+                    : 0,       \"Epf\": 0,       \"Epm\": 0,       \"Ept\": 0,   \
+                    \    \"CTUh-c\": 0,       \"CTUh-nc\": 0,       \"IR\": 0,   \
+                    \    \"LU\": 0,       \"MIPS\": 0,       \"ODP\": 0,       \"\
+                    PM\": 0,       \"POCP\": 0,       \"ADPf\": 0,       \"ADPe\"\
+                    : 0,       \"TPE\": 0,       \"WU\": 0     },     \"endOfLife\"\
+                    : {       \"AP\": 0,       \"GWP\": 0,       \"CTUe\": 0,    \
+                    \   \"Epf\": 0,       \"Epm\": 0,       \"Ept\": 0,       \"CTUh-c\"\
+                    : 0,       \"CTUh-nc\": 0,       \"IR\": 0,       \"LU\": 0, \
+                    \      \"MIPS\": 0,       \"ODP\": 0,       \"PM\": 0,       \"\
+                    POCP\": 0,       \"ADPf\": 0,       \"ADPe\": 0,       \"TPE\"\
+                    : 0,       \"WU\": 0     }   },   \"tags\": [     {       \"name\"\
+                    : \"Datacenter\",       \"impacts\": {         \"AP\": 0,    \
+                    \     \"GWP\": 0,         \"CTUe\": 0,         \"Epf\": 0,   \
+                    \      \"Epm\": 0,         \"Ept\": 0,         \"CTUh-c\": 0,\
+                    \         \"CTUh-nc\": 0,         \"IR\": 0,         \"LU\": 0,\
+                    \         \"MIPS\": 0,         \"ODP\": 0,         \"PM\": 0,\
+                    \         \"POCP\": 0,         \"ADPf\": 0,         \"ADPe\":\
+                    \ 0,         \"TPE\": 0,         \"WU\": 0       }     }   ],\
+                    \   \"quality\": {     \"high\": 0.1,     \"medium\": 0.8,   \
+                    \  \"low\": 0.1   },   \"detailed_impact\": [     {       \"equipementType\"\
+                    : \"LAPTOP\",       \"equipementName\": \"string\",       \"tags\"\
+                    : \"string\",       \"quality\": \"HIGH\",       \"impact\": {\
+                    \         \"build\": {           \"AP\": 0,           \"GWP\"\
+                    : 0,           \"CTUe\": 0,           \"Epf\": 0,           \"\
+                    Epm\": 0,           \"Ept\": 0,           \"CTUh-c\": 0,     \
+                    \      \"CTUh-nc\": 0,           \"IR\": 0,           \"LU\":\
+                    \ 0,           \"MIPS\": 0,           \"ODP\": 0,           \"\
+                    PM\": 0,           \"POCP\": 0,           \"ADPf\": 0,       \
+                    \    \"ADPe\": 0,           \"TPE\": 0,           \"WU\": 0  \
+                    \       },         \"distribution\": {           \"AP\": 0,  \
+                    \         \"GWP\": 0,           \"CTUe\": 0,           \"Epf\"\
+                    : 0,           \"Epm\": 0,           \"Ept\": 0,           \"\
+                    CTUh-c\": 0,           \"CTUh-nc\": 0,           \"IR\": 0,  \
+                    \         \"LU\": 0,           \"MIPS\": 0,           \"ODP\"\
+                    : 0,           \"PM\": 0,           \"POCP\": 0,           \"\
+                    ADPf\": 0,           \"ADPe\": 0,           \"TPE\": 0,      \
+                    \     \"WU\": 0         },         \"use\": {           \"AP\"\
+                    : 0,           \"GWP\": 0,           \"CTUe\": 0,           \"\
+                    Epf\": 0,           \"Epm\": 0,           \"Ept\": 0,        \
+                    \   \"CTUh-c\": 0,           \"CTUh-nc\": 0,           \"IR\"\
+                    : 0,           \"LU\": 0,           \"MIPS\": 0,           \"\
+                    ODP\": 0,           \"PM\": 0,           \"POCP\": 0,        \
+                    \   \"ADPf\": 0,           \"ADPe\": 0,           \"TPE\": 0,\
+                    \           \"WU\": 0         },         \"endOfLife\": {    \
+                    \       \"AP\": 0,           \"GWP\": 0,           \"CTUe\": 0,\
+                    \           \"Epf\": 0,           \"Epm\": 0,           \"Ept\"\
+                    : 0,           \"CTUh-c\": 0,           \"CTUh-nc\": 0,      \
+                    \     \"IR\": 0,           \"LU\": 0,           \"MIPS\": 0, \
+                    \          \"ODP\": 0,           \"PM\": 0,           \"POCP\"\
+                    : 0,           \"ADPf\": 0,           \"ADPe\": 0,           \"\
+                    TPE\": 0,           \"WU\": 0         }       },       \"source\"\
+                    : \"http://aws.com/iuefrbiupdhuçe343U32\",       \"provider\"\
+                    : \"AWS CSR declaration 2024 - 1.0\"     }   ],   \"requestId\"\
+                    : \"string\" }"
+  /reportrequests:
+    get:
       tags:
-      - "Report"
-      operationId: "reportDelete"
-      summary: "delete report"
+      - "Reportrequests"
+      operationId: "reportRequestFind"
+      summary: "find reportRequest"
       parameters:
-      - name: "reportId"
+      - name: "status"
+        required: false
+        in: "query"
+        schema:
+          type: "string"
+      - name: "organisation"
+        required: false
+        in: "query"
+        schema:
+          type: "string"
+      - name: "limit"
+        required: false
+        in: "query"
+        schema:
+          type: "integer"
+          format: "int32"
+          default: 10
+          maximum: 50
+          minimum: 1
+      - name: "offset"
+        required: false
+        in: "query"
+        schema:
+          type: "integer"
+          format: "int32"
+          default: 0
+          minimum: 0
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/ReportRequest"
+    post:
+      tags:
+      - "Reportrequests"
+      operationId: "reportrequestsCreate"
+      summary: "create reportrequests"
+      requestBody:
+        required: true
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ReportRequest"
+            examples:
+              postRequest:
+                value: "{   \"organisation\": \"My company\",   \"dataset\": \"IS\
+                  \ LCA 2024\",   \"electricity\": [     {       \"typeOfReference\"\
+                  : \"Electricity\",       \"name\": \"France\",       \"impacts\"\
+                  : {         \"build\": {           \"AP\": 0,           \"GWP\"\
+                  : 0,           \"CTUe\": 0,           \"Epf\": 0,           \"Epm\"\
+                  : 0,           \"Ept\": 0,           \"CTUh-c\": 0,           \"\
+                  CTUh-nc\": 0,           \"IR\": 0,           \"LU\": 0,        \
+                  \   \"MIPS\": 0,           \"ODP\": 0,           \"PM\": 0,    \
+                  \       \"POCP\": 0,           \"ADPf\": 0,           \"ADPe\":\
+                  \ 0,           \"TPE\": 0,           \"WU\": 0         },      \
+                  \   \"distribution\": {           \"AP\": 0,           \"GWP\":\
+                  \ 0,           \"CTUe\": 0,           \"Epf\": 0,           \"Epm\"\
+                  : 0,           \"Ept\": 0,           \"CTUh-c\": 0,           \"\
+                  CTUh-nc\": 0,           \"IR\": 0,           \"LU\": 0,        \
+                  \   \"MIPS\": 0,           \"ODP\": 0,           \"PM\": 0,    \
+                  \       \"POCP\": 0,           \"ADPf\": 0,           \"ADPe\":\
+                  \ 0,           \"TPE\": 0,           \"WU\": 0         },      \
+                  \   \"use\": {           \"AP\": 0,           \"GWP\": 0,      \
+                  \     \"CTUe\": 0,           \"Epf\": 0,           \"Epm\": 0, \
+                  \          \"Ept\": 0,           \"CTUh-c\": 0,           \"CTUh-nc\"\
+                  : 0,           \"IR\": 0,           \"LU\": 0,           \"MIPS\"\
+                  : 0,           \"ODP\": 0,           \"PM\": 0,           \"POCP\"\
+                  : 0,           \"ADPf\": 0,           \"ADPe\": 0,           \"\
+                  TPE\": 0,           \"WU\": 0         },         \"endOfLife\":\
+                  \ {           \"AP\": 0,           \"GWP\": 0,           \"CTUe\"\
+                  : 0,           \"Epf\": 0,           \"Epm\": 0,           \"Ept\"\
+                  : 0,           \"CTUh-c\": 0,           \"CTUh-nc\": 0,        \
+                  \   \"IR\": 0,           \"LU\": 0,           \"MIPS\": 0,     \
+                  \      \"ODP\": 0,           \"PM\": 0,           \"POCP\": 0, \
+                  \          \"ADPf\": 0,           \"ADPe\": 0,           \"TPE\"\
+                  : 0,           \"WU\": 0         }       },       \"source\": \"\
+                  string\"     }   ],   \"inventory\": [     {       \"equipement_type\"\
+                  : \"LAPTOP\",       \"equipement_name\": \"Generic - Mid range\"\
+                  ,       \"quantity\": 5,       \"unit\": \"one\",       \"lifetime\"\
+                  : 5,       \"quality\": \"HIGH\",       \"yearly_electricity_consupmtion_in_kwh\"\
+                  : 120,       \"mix_of_use\": \"France\",       \"tag\": \"USE\"\
+                  ,       \"impacts\": {         \"build\": {           \"AP\": 0,\
+                  \           \"GWP\": 0,           \"CTUe\": 0,           \"Epf\"\
+                  : 0,           \"Epm\": 0,           \"Ept\": 0,           \"CTUh-c\"\
+                  : 0,           \"CTUh-nc\": 0,           \"IR\": 0,           \"\
+                  LU\": 0,           \"MIPS\": 0,           \"ODP\": 0,          \
+                  \ \"PM\": 0,           \"POCP\": 0,           \"ADPf\": 0,     \
+                  \      \"ADPe\": 0,           \"TPE\": 0,           \"WU\": 0  \
+                  \       },         \"distribution\": {           \"AP\": 0,    \
+                  \       \"GWP\": 0,           \"CTUe\": 0,           \"Epf\": 0,\
+                  \           \"Epm\": 0,           \"Ept\": 0,           \"CTUh-c\"\
+                  : 0,           \"CTUh-nc\": 0,           \"IR\": 0,           \"\
+                  LU\": 0,           \"MIPS\": 0,           \"ODP\": 0,          \
+                  \ \"PM\": 0,           \"POCP\": 0,           \"ADPf\": 0,     \
+                  \      \"ADPe\": 0,           \"TPE\": 0,           \"WU\": 0  \
+                  \       },         \"use\": {           \"AP\": 0,           \"\
+                  GWP\": 0,           \"CTUe\": 0,           \"Epf\": 0,         \
+                  \  \"Epm\": 0,           \"Ept\": 0,           \"CTUh-c\": 0,  \
+                  \         \"CTUh-nc\": 0,           \"IR\": 0,           \"LU\"\
+                  : 0,           \"MIPS\": 0,           \"ODP\": 0,           \"PM\"\
+                  : 0,           \"POCP\": 0,           \"ADPf\": 0,           \"\
+                  ADPe\": 0,           \"TPE\": 0,           \"WU\": 0         },\
+                  \         \"endOfLife\": {           \"AP\": 0,           \"GWP\"\
+                  : 0,           \"CTUe\": 0,           \"Epf\": 0,           \"Epm\"\
+                  : 0,           \"Ept\": 0,           \"CTUh-c\": 0,           \"\
+                  CTUh-nc\": 0,           \"IR\": 0,           \"LU\": 0,        \
+                  \   \"MIPS\": 0,           \"ODP\": 0,           \"PM\": 0,    \
+                  \       \"POCP\": 0,           \"ADPf\": 0,           \"ADPe\":\
+                  \ 0,           \"TPE\": 0,           \"WU\": 0         }       }\
+                  \     }   ] }"
+      responses:
+        "201":
+          description: "Created"
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ReportRequest"
+              examples:
+                reportRequest:
+                  value: "{   \"reportId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+                    ,   \"organisation\": \"My company\",   \"dataset\": \"IS LCA\
+                    \ 2024\",   \"electricity\": [     {       \"typeOfReference\"\
+                    : \"Electricity\",       \"name\": \"France\",       \"impacts\"\
+                    : {         \"build\": {           \"AP\": 0,           \"GWP\"\
+                    : 0,           \"CTUe\": 0,           \"Epf\": 0,           \"\
+                    Epm\": 0,           \"Ept\": 0,           \"CTUh-c\": 0,     \
+                    \      \"CTUh-nc\": 0,           \"IR\": 0,           \"LU\":\
+                    \ 0,           \"MIPS\": 0,           \"ODP\": 0,           \"\
+                    PM\": 0,           \"POCP\": 0,           \"ADPf\": 0,       \
+                    \    \"ADPe\": 0,           \"TPE\": 0,           \"WU\": 0  \
+                    \       },         \"distribution\": {           \"AP\": 0,  \
+                    \         \"GWP\": 0,           \"CTUe\": 0,           \"Epf\"\
+                    : 0,           \"Epm\": 0,           \"Ept\": 0,           \"\
+                    CTUh-c\": 0,           \"CTUh-nc\": 0,           \"IR\": 0,  \
+                    \         \"LU\": 0,           \"MIPS\": 0,           \"ODP\"\
+                    : 0,           \"PM\": 0,           \"POCP\": 0,           \"\
+                    ADPf\": 0,           \"ADPe\": 0,           \"TPE\": 0,      \
+                    \     \"WU\": 0         },         \"use\": {           \"AP\"\
+                    : 0,           \"GWP\": 0,           \"CTUe\": 0,           \"\
+                    Epf\": 0,           \"Epm\": 0,           \"Ept\": 0,        \
+                    \   \"CTUh-c\": 0,           \"CTUh-nc\": 0,           \"IR\"\
+                    : 0,           \"LU\": 0,           \"MIPS\": 0,           \"\
+                    ODP\": 0,           \"PM\": 0,           \"POCP\": 0,        \
+                    \   \"ADPf\": 0,           \"ADPe\": 0,           \"TPE\": 0,\
+                    \           \"WU\": 0         },         \"endOfLife\": {    \
+                    \       \"AP\": 0,           \"GWP\": 0,           \"CTUe\": 0,\
+                    \           \"Epf\": 0,           \"Epm\": 0,           \"Ept\"\
+                    : 0,           \"CTUh-c\": 0,           \"CTUh-nc\": 0,      \
+                    \     \"IR\": 0,           \"LU\": 0,           \"MIPS\": 0, \
+                    \          \"ODP\": 0,           \"PM\": 0,           \"POCP\"\
+                    : 0,           \"ADPf\": 0,           \"ADPe\": 0,           \"\
+                    TPE\": 0,           \"WU\": 0         }       },       \"source\"\
+                    : \"string\"     }   ],   \"inventory\": [     {       \"equipement_type\"\
+                    : \"LAPTOP\",       \"equipement_name\": \"Generic - Mid range\"\
+                    ,       \"quantity\": 5,       \"unit\": \"one\",       \"lifetime\"\
+                    : 5,       \"quality\": \"HIGH\",       \"yearly_electricity_consupmtion_in_kwh\"\
+                    : 120,       \"mix_of_use\": \"France\",       \"tag\": \"USE\"\
+                    ,       \"impacts\": {         \"build\": {           \"AP\":\
+                    \ 0,           \"GWP\": 0,           \"CTUe\": 0,           \"\
+                    Epf\": 0,           \"Epm\": 0,           \"Ept\": 0,        \
+                    \   \"CTUh-c\": 0,           \"CTUh-nc\": 0,           \"IR\"\
+                    : 0,           \"LU\": 0,           \"MIPS\": 0,           \"\
+                    ODP\": 0,           \"PM\": 0,           \"POCP\": 0,        \
+                    \   \"ADPf\": 0,           \"ADPe\": 0,           \"TPE\": 0,\
+                    \           \"WU\": 0         },         \"distribution\": { \
+                    \          \"AP\": 0,           \"GWP\": 0,           \"CTUe\"\
+                    : 0,           \"Epf\": 0,           \"Epm\": 0,           \"\
+                    Ept\": 0,           \"CTUh-c\": 0,           \"CTUh-nc\": 0, \
+                    \          \"IR\": 0,           \"LU\": 0,           \"MIPS\"\
+                    : 0,           \"ODP\": 0,           \"PM\": 0,           \"POCP\"\
+                    : 0,           \"ADPf\": 0,           \"ADPe\": 0,           \"\
+                    TPE\": 0,           \"WU\": 0         },         \"use\": {  \
+                    \         \"AP\": 0,           \"GWP\": 0,           \"CTUe\"\
+                    : 0,           \"Epf\": 0,           \"Epm\": 0,           \"\
+                    Ept\": 0,           \"CTUh-c\": 0,           \"CTUh-nc\": 0, \
+                    \          \"IR\": 0,           \"LU\": 0,           \"MIPS\"\
+                    : 0,           \"ODP\": 0,           \"PM\": 0,           \"POCP\"\
+                    : 0,           \"ADPf\": 0,           \"ADPe\": 0,           \"\
+                    TPE\": 0,           \"WU\": 0         },         \"endOfLife\"\
+                    : {           \"AP\": 0,           \"GWP\": 0,           \"CTUe\"\
+                    : 0,           \"Epf\": 0,           \"Epm\": 0,           \"\
+                    Ept\": 0,           \"CTUh-c\": 0,           \"CTUh-nc\": 0, \
+                    \          \"IR\": 0,           \"LU\": 0,           \"MIPS\"\
+                    : 0,           \"ODP\": 0,           \"PM\": 0,           \"POCP\"\
+                    : 0,           \"ADPf\": 0,           \"ADPe\": 0,           \"\
+                    TPE\": 0,           \"WU\": 0         }       }     }   ],   \"\
+                    status\": {     \"reportId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+                    ,     \"reportUri\": \"/report/3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+                    ,     \"state\": \"PROCESSING\"   } }"
+  /reportrequests/{reportRequestId}:
+    get:
+      tags:
+      - "Reportrequests"
+      operationId: "reportRequestGet"
+      summary: "get reportRequest"
+      parameters:
+      - name: "reportRequestId"
         required: true
         in: "path"
         schema:
           type: "string"
       responses:
-        "204":
-          description: "No Content"
-        "400":
-          description: "Bad Request\n\n"
+        "200":
+          description: "Ok"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/"
-        "404":
-          description: "Not Found\n\n"
+                $ref: "#/components/schemas/ReportRequest"
+              examples:
+                reportrequest:
+                  value: "{   \"reportId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+                    ,   \"organisation\": \"My company\",   \"dataset\": \"IS LCA\
+                    \ 2024\",   \"electricity\": [     {       \"typeOfReference\"\
+                    : \"Electricity\",       \"name\": \"France\",       \"impacts\"\
+                    : {         \"build\": {           \"AP\": 0,           \"GWP\"\
+                    : 0,           \"CTUe\": 0,           \"Epf\": 0,           \"\
+                    Epm\": 0,           \"Ept\": 0,           \"CTUh-c\": 0,     \
+                    \      \"CTUh-nc\": 0,           \"IR\": 0,           \"LU\":\
+                    \ 0,           \"MIPS\": 0,           \"ODP\": 0,           \"\
+                    PM\": 0,           \"POCP\": 0,           \"ADPf\": 0,       \
+                    \    \"ADPe\": 0,           \"TPE\": 0,           \"WU\": 0  \
+                    \       },         \"distribution\": {           \"AP\": 0,  \
+                    \         \"GWP\": 0,           \"CTUe\": 0,           \"Epf\"\
+                    : 0,           \"Epm\": 0,           \"Ept\": 0,           \"\
+                    CTUh-c\": 0,           \"CTUh-nc\": 0,           \"IR\": 0,  \
+                    \         \"LU\": 0,           \"MIPS\": 0,           \"ODP\"\
+                    : 0,           \"PM\": 0,           \"POCP\": 0,           \"\
+                    ADPf\": 0,           \"ADPe\": 0,           \"TPE\": 0,      \
+                    \     \"WU\": 0         },         \"use\": {           \"AP\"\
+                    : 0,           \"GWP\": 0,           \"CTUe\": 0,           \"\
+                    Epf\": 0,           \"Epm\": 0,           \"Ept\": 0,        \
+                    \   \"CTUh-c\": 0,           \"CTUh-nc\": 0,           \"IR\"\
+                    : 0,           \"LU\": 0,           \"MIPS\": 0,           \"\
+                    ODP\": 0,           \"PM\": 0,           \"POCP\": 0,        \
+                    \   \"ADPf\": 0,           \"ADPe\": 0,           \"TPE\": 0,\
+                    \           \"WU\": 0         },         \"endOfLife\": {    \
+                    \       \"AP\": 0,           \"GWP\": 0,           \"CTUe\": 0,\
+                    \           \"Epf\": 0,           \"Epm\": 0,           \"Ept\"\
+                    : 0,           \"CTUh-c\": 0,           \"CTUh-nc\": 0,      \
+                    \     \"IR\": 0,           \"LU\": 0,           \"MIPS\": 0, \
+                    \          \"ODP\": 0,           \"PM\": 0,           \"POCP\"\
+                    : 0,           \"ADPf\": 0,           \"ADPe\": 0,           \"\
+                    TPE\": 0,           \"WU\": 0         }       },       \"source\"\
+                    : \"string\"     }   ],   \"inventory\": [     {       \"equipement_type\"\
+                    : \"LAPTOP\",       \"equipement_name\": \"Generic - Mid range\"\
+                    ,       \"quantity\": 5,       \"unit\": \"one\",       \"lifetime\"\
+                    : 5,       \"quality\": \"HIGH\",       \"yearly_electricity_consupmtion_in_kwh\"\
+                    : 120,       \"mix_of_use\": \"France\",       \"tag\": \"USE\"\
+                    ,       \"impacts\": {         \"build\": {           \"AP\":\
+                    \ 0,           \"GWP\": 0,           \"CTUe\": 0,           \"\
+                    Epf\": 0,           \"Epm\": 0,           \"Ept\": 0,        \
+                    \   \"CTUh-c\": 0,           \"CTUh-nc\": 0,           \"IR\"\
+                    : 0,           \"LU\": 0,           \"MIPS\": 0,           \"\
+                    ODP\": 0,           \"PM\": 0,           \"POCP\": 0,        \
+                    \   \"ADPf\": 0,           \"ADPe\": 0,           \"TPE\": 0,\
+                    \           \"WU\": 0         },         \"distribution\": { \
+                    \          \"AP\": 0,           \"GWP\": 0,           \"CTUe\"\
+                    : 0,           \"Epf\": 0,           \"Epm\": 0,           \"\
+                    Ept\": 0,           \"CTUh-c\": 0,           \"CTUh-nc\": 0, \
+                    \          \"IR\": 0,           \"LU\": 0,           \"MIPS\"\
+                    : 0,           \"ODP\": 0,           \"PM\": 0,           \"POCP\"\
+                    : 0,           \"ADPf\": 0,           \"ADPe\": 0,           \"\
+                    TPE\": 0,           \"WU\": 0         },         \"use\": {  \
+                    \         \"AP\": 0,           \"GWP\": 0,           \"CTUe\"\
+                    : 0,           \"Epf\": 0,           \"Epm\": 0,           \"\
+                    Ept\": 0,           \"CTUh-c\": 0,           \"CTUh-nc\": 0, \
+                    \          \"IR\": 0,           \"LU\": 0,           \"MIPS\"\
+                    : 0,           \"ODP\": 0,           \"PM\": 0,           \"POCP\"\
+                    : 0,           \"ADPf\": 0,           \"ADPe\": 0,           \"\
+                    TPE\": 0,           \"WU\": 0         },         \"endOfLife\"\
+                    : {           \"AP\": 0,           \"GWP\": 0,           \"CTUe\"\
+                    : 0,           \"Epf\": 0,           \"Epm\": 0,           \"\
+                    Ept\": 0,           \"CTUh-c\": 0,           \"CTUh-nc\": 0, \
+                    \          \"IR\": 0,           \"LU\": 0,           \"MIPS\"\
+                    : 0,           \"ODP\": 0,           \"PM\": 0,           \"POCP\"\
+                    : 0,           \"ADPf\": 0,           \"ADPe\": 0,           \"\
+                    TPE\": 0,           \"WU\": 0         }       }     }   ],   \"\
+                    status\": {     \"reportId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+                    ,     \"reportUri\": \"/report/3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+                    ,     \"state\": \"PROCESSING\"   } }"
+  /reportrequests/{reportRequestId}/status:
+    get:
+      tags:
+      - "Reportrequests"
+      operationId: "statusFind"
+      summary: "find status"
+      parameters:
+      - name: "reportRequestId"
+        required: true
+        in: "path"
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Ok"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/"
-        "405":
-          description: "Method Not Allowed\n\n"
+                $ref: "#/components/schemas/Status"
+  /references:
+    get:
+      tags:
+      - "References"
+      operationId: "referenceFind"
+      summary: "find reference"
+      responses:
+        "200":
+          description: "Ok"
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: "#/components/schemas/"
-        "422":
-          description: "Unprocessable entity\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "500":
-          description: "Internal Server Error\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
-        "503":
-          description: "Service Unavailable\n\n"
-          content:
-            application/json;charset=utf-8:
-              schema:
-                $ref: "#/components/schemas/"
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Reference"
+              examples:
+                referenceSamble:
+                  value: "[\n  {\"typeOfReference\":\"EQUIPMENT\", \n    \"equipementType\"\
+                    : \"SERVER\", \n    \"references\": [\"Dell Proliant 12\"]\n \
+                    \ }, \n  {\n    \"typeOfReference\": \"ELECTRICTY\",\n    \"name\"\
+                    :\"France Energy mix 2022\", \n    \"impacts\": {\n        \"\
+                    build\": {\n          \"AP\": 0,\n          \"GWP\": 0,\n    \
+                    \      \"CTUe\": 0,\n          \"Epf\": 0,\n          \"Epm\"\
+                    : 0,\n          \"Ept\": 0,\n          \"CTUh-c\": 0,\n      \
+                    \    \"CTUh-nc\": 0,\n          \"IR\": 0,\n          \"LU\":\
+                    \ 0,\n          \"MIPS\": 0,\n          \"ODP\": 0,\n        \
+                    \  \"PM\": 0,\n          \"POCP\": 0,\n          \"ADPf\": 0,\n\
+                    \          \"ADPe\": 0,\n          \"TPE\": 0,\n          \"WU\"\
+                    : 0\n        },\n        \"distribution\": {\n          \"AP\"\
+                    : 0,\n          \"GWP\": 0,\n          \"CTUe\": 0,\n        \
+                    \  \"Epf\": 0,\n          \"Epm\": 0,\n          \"Ept\": 0,\n\
+                    \          \"CTUh-c\": 0,\n          \"CTUh-nc\": 0,\n       \
+                    \   \"IR\": 0,\n          \"LU\": 0,\n          \"MIPS\": 0,\n\
+                    \          \"ODP\": 0,\n          \"PM\": 0,\n          \"POCP\"\
+                    : 0,\n          \"ADPf\": 0,\n          \"ADPe\": 0,\n       \
+                    \   \"TPE\": 0,\n          \"WU\": 0\n        },\n        \"use\"\
+                    : {\n          \"AP\": 0,\n          \"GWP\": 0,\n          \"\
+                    CTUe\": 0,\n          \"Epf\": 0,\n          \"Epm\": 0,\n   \
+                    \       \"Ept\": 0,\n          \"CTUh-c\": 0,\n          \"CTUh-nc\"\
+                    : 0,\n          \"IR\": 0,\n          \"LU\": 0,\n          \"\
+                    MIPS\": 0,\n          \"ODP\": 0,\n          \"PM\": 0,\n    \
+                    \      \"POCP\": 0,\n          \"ADPf\": 0,\n          \"ADPe\"\
+                    : 0,\n          \"TPE\": 0,\n          \"WU\": 0\n        },\n\
+                    \        \"endOfLife\": {\n          \"AP\": 0,\n          \"\
+                    GWP\": 0,\n          \"CTUe\": 0,\n          \"Epf\": 0,\n   \
+                    \       \"Epm\": 0,\n          \"Ept\": 0,\n          \"CTUh-c\"\
+                    : 0,\n          \"CTUh-nc\": 0,\n          \"IR\": 0,\n      \
+                    \    \"LU\": 0,\n          \"MIPS\": 0,\n          \"ODP\": 0,\n\
+                    \          \"PM\": 0,\n          \"POCP\": 0,\n          \"ADPf\"\
+                    : 0,\n          \"ADPe\": 0,\n          \"TPE\": 0,\n        \
+                    \  \"WU\": 0\n        }\n      },\n      \"source\": \"string\"\
+                    \n  }\n]"
 servers:
 - url: "/v1"
 components:
   schemas:
-    EQUIPEMENT_TYPE:
+    EQUIPEMENTTYPE:
       type: "string"
       enum:
       - "LAPTOP"
       - "NOT IT"
       - "SERVER"
       - "VIRTUAL MACHINE"
-    Electricity_Mix:
-      required:
-      - "name"
-      - "impact"
-      - "source"
-      type: "object"
-      properties:
-        name:
-          type: "string"
-        impact:
-          $ref: "#/components/schemas/Impact"
-        source:
-          $ref: "#/components/schemas/Source"
+      - "CLOUD"
+    Electricity:
+      description: "\n\n**Polymorphism**\n\n  Parent: Reference\n\n  Discriminator:\
+        \ typeOfReference"
+      allOf:
+      - $ref: "#/components/schemas/Reference"
+      - required:
+        - "name"
+        - "impacts"
+        - "source"
+        type: "object"
+        properties:
+          name:
+            description: "name of electricity mix"
+            type: "string"
+          impacts:
+            $ref: "#/components/schemas/Impact"
+          source:
+            description: "electricity impact report source"
+            type: "string"
+            format: "uri"
+    EquipementReference:
+      description: "\n\n**Polymorphism**\n\n  Parent: Reference\n\n  Discriminator:\
+        \ typeOfReference"
+      allOf:
+      - $ref: "#/components/schemas/Reference"
+      - required:
+        - "references"
+        type: "object"
+        properties:
+          equipementType:
+            $ref: "#/components/schemas/EQUIPEMENTTYPE"
+          references:
+            description: "list of equipment present in the repository"
+            type: "array"
+            items:
+              type: "string"
     Impact:
+      description: "global impact by lifecycle phase"
       required:
       - "build"
       - "distribution"
@@ -266,17 +579,17 @@ components:
       type: "object"
       properties:
         build:
-          $ref: "#/components/schemas/Impacts_By_Indicators"
+          $ref: "#/components/schemas/ImpactsByIndicators"
         distribution:
-          $ref: "#/components/schemas/Impacts_By_Indicators"
+          $ref: "#/components/schemas/ImpactsByIndicators"
         use:
-          $ref: "#/components/schemas/Impacts_By_Indicators"
+          $ref: "#/components/schemas/ImpactsByIndicators"
         endOfLife:
-          $ref: "#/components/schemas/Impacts_By_Indicators"
-    Impact_Detail:
+          $ref: "#/components/schemas/ImpactsByIndicators"
+    ImpactDetail:
       required:
-      - "equipement_type"
-      - "equipement_name"
+      - "equipementType"
+      - "equipementName"
       - "tags"
       - "quality"
       - "impact"
@@ -284,58 +597,120 @@ components:
       - "provider"
       type: "object"
       properties:
-        equipement_type:
-          $ref: "#/components/schemas/EQUIPEMENT_TYPE"
-        equipement_name:
+        equipementType:
+          $ref: "#/components/schemas/EQUIPEMENTTYPE"
+        equipementName:
+          description: "name of the equipment (must be in the references)"
           type: "string"
         tags:
+          description: "equipment location"
           type: "string"
         quality:
-          $ref: "#/components/schemas/Quality"
+          $ref: "#/components/schemas/QUALITY"
         impact:
           $ref: "#/components/schemas/Impact"
         source:
+          description: "reference LCA URI"
           type: "string"
+          format: "uri"
         provider:
+          description: "provider of reference LCA"
           type: "string"
-    Impacts_By_Indicators:
+    ImpactsByIndicators:
+      description: "Impact by main indicators"
+      required:
+      - "AP"
+      - "GWP"
+      - "PM"
+      - "ADPe"
       type: "object"
       properties:
         AP:
-          type: "string"
+          description: "Acidification - mol H+ eq"
+          type: "number"
+          format: "float"
         GWP:
-          type: "string"
+          description: "Climate change - kg CO2 eq"
+          type: "number"
+          format: "float"
         CTUe:
-          type: "string"
+          description: "Ecotoxicity, freshwater - CTUe"
+          type: "number"
+          format: "float"
         Epf:
-          type: "string"
+          description: "Eutrophication, freshwater - kg P eq"
+          type: "number"
+          format: "float"
         Epm:
-          type: "string"
+          description: "Eutrophication, marine - kg N eq"
+          type: "number"
+          format: "float"
         Ept:
-          type: "string"
+          description: "Eutrophication, terrestrial - kg N eq"
+          type: "number"
+          format: "float"
         CTUh-c:
-          type: "string"
+          description: "Human toxicity, cancer - CTUh"
+          type: "number"
+          format: "float"
         CTUh-nc:
-          type: "string"
+          description: "Human toxicity, non-cancer - CTUh"
+          type: "number"
+          format: "float"
         IR:
-          type: "string"
+          description: "Ionising radiation,human health - kg U235 eq"
+          type: "number"
+          format: "float"
         LU:
-          type: "string"
+          description: "Land use - Dimensionless"
+          type: "number"
+          format: "float"
         MIPS:
-          type: "string"
+          description: "Material Input per Unit of Service - kg"
+          type: "number"
+          format: "float"
         ODP:
-          type: "string"
+          description: "Ozone depletion - kg CFC-11 eq"
+          type: "number"
+          format: "float"
         PM:
-          type: "string"
+          description: "Particulate matter - Disease occurrences"
+          type: "number"
+          format: "float"
         POCP:
-          type: "string"
+          description: "Photochemical ozone formation - kg NMVOC eq"
+          type: "number"
+          format: "float"
         ADPf:
-          type: "string"
+          description: "Resource use, fossils - MJ"
+          type: "number"
+          format: "float"
         ADPe:
-          type: "string"
+          description: "Resource use, minerals and metals - kg Sb eq"
+          type: "number"
+          format: "float"
         TPE:
-          type: "string"
+          description: "Total Primary Energy - MJ"
+          type: "number"
+          format: "float"
         WU:
+          description: "Water use - m3 eq"
+          type: "number"
+          format: "float"
+    Indicator:
+      required:
+      - "indicator"
+      - "source"
+      - "unit"
+      type: "object"
+      properties:
+        indicator:
+          description: "name of  indicator in this report"
+          type: "string"
+        source:
+          type: "string"
+        unit:
+          description: "mesurement unit f indicator exemple : kg CO2e"
           type: "string"
     Inventory:
       required:
@@ -346,30 +721,36 @@ components:
       - "lifetime"
       - "quality"
       - "yearly_electricity_consupmtion_in_kwh"
-      - "electricity_Mix"
+      - "mix_of_use"
       - "impacts"
       type: "object"
       properties:
         equipement_type:
-          $ref: "#/components/schemas/EQUIPEMENT_TYPE"
+          $ref: "#/components/schemas/EQUIPEMENTTYPE"
         equipement_name:
+          description: "name of the equipment (must be in the references)"
           type: "string"
         quantity:
-          type: "number"
-          format: "float"
+          description: "quantity of the equipement"
+          type: "integer"
+          format: "int32"
         unit:
           type: "string"
         lifetime:
+          description: "estimated lifetime of the equipment"
           type: "number"
           format: "float"
         quality:
-          $ref: "#/components/schemas/Quality"
+          $ref: "#/components/schemas/QUALITY"
         yearly_electricity_consupmtion_in_kwh:
           type: "number"
           format: "float"
-        electricity_Mix:
+        mix_of_use:
+          description: "electricity mix of use for this equipment (must be in the\
+            \ references)"
           type: "string"
         tag:
+          description: "equipment location"
           type: "string"
         impacts:
           $ref: "#/components/schemas/Impact"
@@ -383,12 +764,16 @@ components:
       type: "object"
       properties:
         organization:
+          description: "Organization Nane"
           type: "string"
         dataset:
           type: "string"
         timestamp:
+          description: "report timestamp"
           type: "string"
+          format: "date-time"
         provider:
+          description: "Provider of this report"
           type: "string"
         sources:
           type: "array"
@@ -396,38 +781,60 @@ components:
             $ref: "#/components/schemas/Source"
         version:
           type: "string"
-    Quality:
+        indicators:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Indicator"
+    QUALITY:
       type: "string"
       enum:
       - "HIGH"
       - "LOW"
       - "MEDIUM"
-    Report:
+    Reference:
+      description: "\n\n**Polymorphism**\n\n  Discriminator: typeOfReference\n\n \
+        \ One of:\n  - Electricity\n  - EquipementReference"
+      discriminator:
+        propertyName: "typeOfReference"
+        mapping:
+          Electricity: "#/components/schemas/Electricity"
+          EquipementReference: "#/components/schemas/EquipementReference"
+      required:
+      - "typeOfReference"
       type: "object"
       properties:
+        typeOfReference:
+          $ref: "#/components/schemas/TYPEOFREFERENCE"
+    Report:
+      required:
+      - "metadata"
+      - "total_impact"
+      - "tags"
+      - "quality"
+      type: "object"
+      properties:
+        reportId:
+          type: "string"
+          format: "uuid"
         metadata:
           $ref: "#/components/schemas/Metadata"
         total_impact:
           $ref: "#/components/schemas/Impact"
         tags:
+          description: "impacts by equipment location"
           type: "array"
           items:
             $ref: "#/components/schemas/Tag"
-        inventory:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/Inventory"
         quality:
-          $ref: "#/components/schemas/Report_Quality"
+          $ref: "#/components/schemas/ReportQuality"
         detailed_impact:
+          description: "impact by equipment"
           type: "array"
           items:
-            $ref: "#/components/schemas/Impact_Detail"
-        electricity_mix:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/Electricity_Mix"
-    Report_Quality:
+            $ref: "#/components/schemas/ImpactDetail"
+        requestId:
+          type: "string"
+    ReportQuality:
       required:
       - "high"
       - "medium"
@@ -443,6 +850,38 @@ components:
         low:
           type: "number"
           format: "float"
+    ReportRequest:
+      required:
+      - "organisation"
+      - "dataset"
+      - "electricity"
+      - "inventory"
+      type: "object"
+      properties:
+        reportId:
+          type: "string"
+          format: "uuid"
+        organisation:
+          type: "string"
+        dataset:
+          type: "string"
+        electricity:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Electricity"
+        inventory:
+          description: "inventory to use for the report"
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Inventory"
+        status:
+          $ref: "#/components/schemas/Status"
+    STATUS:
+      type: "string"
+      enum:
+      - "AVAILABLE"
+      - "PENDING"
+      - "PROCESSING"
     Source:
       required:
       - "name"
@@ -456,6 +895,26 @@ components:
         href:
           type: "string"
           format: "uri"
+    Status:
+      required:
+      - "reportId"
+      - "reportUri"
+      - "state"
+      type: "object"
+      properties:
+        reportId:
+          type: "string"
+          format: "uuid"
+        reportUri:
+          type: "string"
+          format: "uri"
+        state:
+          $ref: "#/components/schemas/STATUS"
+    TYPEOFREFERENCE:
+      type: "string"
+      enum:
+      - "ELECTRICTY"
+      - "EQUIPMENT"
     Tag:
       required:
       - "impacts"
@@ -464,4 +923,4 @@ components:
         name:
           type: "string"
         impacts:
-          $ref: "#/components/schemas/Impacts_By_Indicators"
+          $ref: "#/components/schemas/ImpactsByIndicators"
